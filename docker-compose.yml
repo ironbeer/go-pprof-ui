@@ -13,14 +13,14 @@ x-build: &common
 services:
   heap:
     <<: *common
-    command: go tool pprof -http='0.0.0.0:6061' ${PPROF_SERVER}/heap
+    command: go tool pprof -http="0.0.0.0:$HEAP_EXPOSE" $HEAP_ENDPOINT
     ports:
-      - 6061:6061/tcp
+      - $HEAP_EXPOSE:$HEAP_EXPOSE/tcp
 
   goroutine:
     <<: *common
     build: ./
-    command: go tool pprof -http='0.0.0.0:6062' ${PPROF_SERVER}/goroutine
+    command: go tool pprof -http="0.0.0.0:$GOROUTINE_EXPOSE" $GOROUTINE_ENDPOINT
     ports:
-      - 6062:6062/tcp
+      - $GOROUTINE_EXPOSE:$GOROUTINE_EXPOSE/tcp
   

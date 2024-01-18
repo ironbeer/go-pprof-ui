@@ -1,0 +1,26 @@
+version: '3'
+
+x-build: &common
+  build:
+    args:
+      GIT_REPO: $GIT_REPO
+      GIT_TAG: $GIT_TAG
+  volumes:
+    - ./cache:/root/pprof
+  extra_hosts:
+    - host.docker.internal:host-gateway
+
+services:
+  heap:
+    <<: *common
+    command: go tool pprof -http='0.0.0.0:6061' ${PPROF_SERVER}/heap
+    ports:
+      - 6061:6061/tcp
+
+  goroutine:
+    <<: *common
+    build: ./
+    command: go tool pprof -http='0.0.0.0:6062' ${PPROF_SERVER}/goroutine
+    ports:
+      - 6062:6062/tcp
+  

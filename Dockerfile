@@ -7,11 +7,12 @@ RUN apt update && apt install -y graphviz
 WORKDIR /home/runner/work/verse-verifier
 
 ARG GIT_REPO=https://github.com/oasysgames/verse-verifier.git
+ARG GIT_TAG=main
+
 RUN git clone $GIT_REPO
 
 WORKDIR /home/runner/work/verse-verifier/verse-verifier
 
-ARG GIT_TAG=main
 RUN git checkout $GIT_TAG
 
 RUN go mod download

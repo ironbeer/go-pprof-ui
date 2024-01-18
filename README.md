@@ -7,7 +7,7 @@ cp .env.sample .env # Then edit this file.
 
 Run
 ```shell
-docker-compose up
+docker-compose build && docker-compose up
 ```
 
 Usage

@@ -6,8 +6,8 @@ RUN apt update && apt install -y graphviz
 # GitHub Actionsでのビルド時のソースコードclone場所
 WORKDIR /home/runner/work/verse-verifier
 
-ARG GIT_REPO=https://github.com/oasysgames/verse-verifier.git
-ARG GIT_TAG=main
+ARG GIT_REPO=https://github.com/ironbeer/verse-verifier.git
+ARG GIT_TAG=v0.0.9-alpha0
 
 RUN git clone $GIT_REPO
 
